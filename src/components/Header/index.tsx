@@ -17,6 +17,7 @@ const StyledHeader = styled(Layout.Header)`
   z-index: 1;
   width: 100%;
   background-color: ${colors.white.primary};
+  border-bottom: 1px solid ${colors.grey.primary};
 `
 
 export default Header
