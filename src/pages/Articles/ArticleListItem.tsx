@@ -1,25 +1,32 @@
 import React from 'react'
+import { Skeleton } from 'antd'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { List } from 'antd'
-import { routePath } from '../../constants'
-import { Article } from '../../types'
-import TagLists from '../../components/TagList'
+import { routePath } from 'src/constants'
+import { PropsTypes } from 'src/types'
+import TagLists from 'src/components/TagList'
 
 type ArticleProps = {
-  article: Article
+  article: PropsTypes.Article
+  isLoading: boolean
 }
-const ArticleListItem: React.FC<ArticleProps> = ({ article }) => {
+
+const ArticleListItem: React.FC<ArticleProps> = ({ article, isLoading }) => {
   const { id, title, tags, text } = article
   const linkTo = `${routePath.ARTICLES}/${id}`
 
   return (
     <ListItem>
-      <ItemLink to={linkTo}>
-        <TagLists tags={tags} />
-        <ItemMeta title={<Title>{title}</Title>} />
-        <Description>{text}</Description>
-      </ItemLink>
+      {isLoading ? (
+        <Skeleton active={true} />
+      ) : (
+        <ItemLink to={linkTo}>
+          <TagLists tags={tags} />
+          <ItemMeta title={<Title>{title}</Title>} />
+          <Description>{text}</Description>
+        </ItemLink>
+      )}
     </ListItem>
   )
 }

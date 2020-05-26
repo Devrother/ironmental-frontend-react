@@ -1,10 +1,14 @@
-import * as React from 'react'
+import React, { useEffect, useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { List } from 'antd'
 import ArticleListItem from './ArticleListItem'
+import { getArticles } from 'src/services/articles/reducer'
+import { articlesSelector } from 'src/services/articles/selectors'
+import { PropsTypes } from 'src/types'
 
 // TODO: useParams를 사용하여 ArchiveIntroSection일 경우 인피니티 스크롤이 먹히지 않도록 하기
 const ArticleList: React.FC = () => {
-  const listData = [
+  /*  const listData = [
     {
       id: '5cf1423357cd510271cd9289',
       title: `CORS란 무엇인가요?`,
@@ -101,13 +105,27 @@ const ArticleList: React.FC = () => {
       created: '2019-05-31T15:05:28.527Z',
       updated: '2019-05-31T15:05:28.527Z',
     },
-  ]
+  ] */
 
+  const disptach = useDispatch()
+  const { loading, articles } = useSelector(articlesSelector)
+
+  const articleList = useMemo(
+    () =>
+      articles.map((item: PropsTypes.Article, index: number) => (
+        <ArticleListItem key={index} article={item} isLoading={loading} />
+      )),
+    [articles, loading]
+  )
+
+  useEffect(() => {
+    disptach(getArticles(0))
+  }, [disptach])
+
+  // FIXME: 첫 진입시 스켈레톤이미지가 나오지 않는 부분
   return (
     <List itemLayout="vertical" size="large">
-      {listData.map((item, index) => (
-        <ArticleListItem key={index} article={item} />
-      ))}
+      {articleList}
     </List>
   )
 }

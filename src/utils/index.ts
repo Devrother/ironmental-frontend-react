@@ -1,3 +1,5 @@
-import * as DateUtils from './Date'
+import * as dateUtils from './date'
+import * as validators from './validator'
+import * as reduxUtils from './redux'
 
-export { DateUtils }
+export { dateUtils, validators, reduxUtils }

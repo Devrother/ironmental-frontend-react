@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Tag } from 'antd'
-import { colors } from '../styles/palette'
+import { colors } from 'src/styles/palette'
 
 interface Props {
   tags: string[]
@@ -27,13 +27,14 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   list-style: none;
-
+  //FIXME: 태그 검색 필터링 기능때 사용하던 css 파일, 불필요시 삭제하기
   /* &:hover {
     cursor: pointer;
   } */
 `
 
 const StyledTag = styled(Tag)`
+//FIXME: 태그 검색 필터링 기능때 사용하던 css 파일, 불필요시 삭제하기
   /* &:hover {
     cursor: pointer;
     background-color: ${colors.grey.primary};

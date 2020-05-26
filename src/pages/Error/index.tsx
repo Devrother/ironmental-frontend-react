@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Result, Button } from 'antd'
-import { errorMessage } from '../../constants'
+import { errorMessage } from 'src/constants'
 import { RouteComponentProps } from 'react-router-dom'
-import { ErrorInfo } from '../../types'
+import { PropsTypes } from 'src/types'
 
 interface Props extends RouteComponentProps {
   errorCode: 404 | 500 | '404' | '500'
@@ -11,7 +11,7 @@ interface Props extends RouteComponentProps {
 // TODO: 구독 결과 페이지의 오류랑은 별개, 구독 결과 페이지 메세지는 승욱이랑 의논
 const Error: React.FC<Props> = ({ errorCode = 404, history }) => {
   const errorResults: {
-    [key in Props['errorCode']]: ErrorInfo
+    [key in Props['errorCode']]: PropsTypes.ErrorInfo
   } = {
     404: { status: '404', title: '404', subTitle: errorMessage.notFound },
     500: { status: '500', title: '500', subTitle: errorMessage.server },

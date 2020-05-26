@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import TagList from '../../../components/TagList'
+import TagList from 'src/components/TagList'
 import { Card } from 'antd'
 
 // TODO: 사가 적용때 props로 데이터 내려받도록 만들기

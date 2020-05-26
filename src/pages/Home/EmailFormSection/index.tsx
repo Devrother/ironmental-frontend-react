@@ -2,18 +2,29 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Button } from 'antd'
 import { MailOutlined } from '@ant-design/icons'
-import { fadeInUp } from '../../../styles/animations'
+import { fadeInUp } from 'src/styles/animations'
 import EmilFormModal from './EmilFormModal'
-
+import ResultModal from './ResultModal'
 const FormSection: React.FC = () => {
   const [visibleModal, setVisibleModal] = useState(false)
+  const [visibleResult, setVisibleResult] = useState(false)
 
+  // TODO: 부모-자식 간에 통신하게 하지말고 redux 상태로만 visible 하게하기
+  // 여기서 const visibleModal =  useSelector()로 하고, modal 컴포넌트에서 showModal 메서드 관리
   const showModal = () => {
     setVisibleModal(true)
   }
 
   const closeModal = () => {
     setVisibleModal(false)
+  }
+
+  const showResult = () => {
+    setVisibleResult(true)
+  }
+
+  const closeResult = () => {
+    setVisibleResult(false)
   }
 
   return (
@@ -37,10 +48,11 @@ const FormSection: React.FC = () => {
         >
           구독하기
         </Button>
-        {visibleModal && (
-          <EmilFormModal /* visible={visibleModal} */ closeModal={closeModal} />
-        )}
       </ButtonContainer>
+      {visibleModal && (
+        <EmilFormModal closeModal={closeModal} showResult={showResult} />
+      )}
+      {visibleResult && <ResultModal closeResult={closeResult} />}
     </Section>
   )
 }

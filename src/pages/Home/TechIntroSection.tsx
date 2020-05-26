@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
-import { icons } from '../../assets/icons'
-import { fadeInUp } from '../../styles/animations'
-import { useAnimationTrigger } from '../../hooks'
+import { icons } from 'src/assets/icons'
+import { fadeInUp } from 'src/styles/animations'
+import { useAnimationTrigger } from 'src/hooks'
 // interface Props {}
 
 const TechIntroSection: React.FC = props => {

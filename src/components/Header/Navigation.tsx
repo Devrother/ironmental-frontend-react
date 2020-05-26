@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { routePath } from '../../constants'
+import { routePath } from 'src/constants'
+import Responsive from 'src/layouts/Responsive'
 
-import Responsive from '../../layouts/Responsive'
 const Navigation: React.FC = () => {
   return (
     <Responsive>

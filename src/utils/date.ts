@@ -1,4 +1,4 @@
-// TODO: enum 타입 조사
+// FIXME: enum 타입으로
 const MonthMap: { [key: string]: string } = {
   '01': 'Jan',
   '03': 'Mar',
@@ -21,5 +21,5 @@ export const convertDate = (date: string) => {
   const month = removedTimezoneDate.substr(5, 2)
   const day = removedTimezoneDate.substr(8, 2)
 
-  return `${MonthMap[month]}. ${day}. ${year}.`
+  return `${MonthMap[month]} ${day} ${year}`
 }

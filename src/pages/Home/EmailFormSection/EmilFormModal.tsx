@@ -1,25 +1,31 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Modal, Input, Button } from 'antd'
 import styled from 'styled-components'
-import { validateEmail } from '../../../validators'
-import { keyCodes } from '../../../constants'
+import { validators } from 'src/utils'
+import { keyCodes } from 'src/constants'
+import { sendEmailSubscribe } from 'src/services/subscribe/reducer'
+
 interface Props {
-  // visible: boolean
   closeModal: () => void
+  showResult: () => void
 }
 
-const EmailFormModal: React.FC<Props> = ({ /* visible, */ closeModal }) => {
-  /* const [confirmLoading, setConfirmLoading] = useState(false) */
+const EmailFormModal: React.FC<Props> = ({ closeModal, showResult }) => {
+  const dispatch = useDispatch()
   const [email, setEmail] = useState('')
   const [iserror, setIserror] = useState(false)
 
   // TODO: iserror를 boolean으로 못받는 이슈 해결하기
   const handleSubmit = () => {
-    if (!validateEmail(email)) {
+    if (!validators.validateEmail(email)) {
       setIserror(true)
+      return
     }
-    // setConfirmLoading(true)
-    /* closeModal() */
+
+    dispatch(sendEmailSubscribe(email))
+    showResult()
+    closeModal()
   }
 
   const handleCancel = () => {
@@ -50,7 +56,6 @@ const EmailFormModal: React.FC<Props> = ({ /* visible, */ closeModal }) => {
     <Modal
       visible={true}
       footer={null}
-      /* confirmLoading={confirmLoading}*/
       onCancel={handleCancel}
       bodyStyle={{ paddingBottom: '50px' }}
     >
@@ -65,7 +70,7 @@ const EmailFormModal: React.FC<Props> = ({ /* visible, */ closeModal }) => {
       <InputContainer>
         <StyledInput
           type="email"
-          iserror={iserror ? true : false}
+          iserror={iserror ? 1 : 0}
           placeholder="E-mail"
           size="large"
           onChange={e => handleChange(e)}
@@ -95,7 +100,8 @@ const InputContainer = styled.div`
   display: flex;
 `
 
-const StyledInput = styled(Input)<{ iserror: boolean }>`
+// FIXME:  for a non-boolean attribute. 에러때문에 임시로 iserror 타입을 number로함
+const StyledInput = styled(Input)<{ iserror: number }>`
   ${props => {
     if (props.iserror) {
       return `border: 1px solid red;color: red;`

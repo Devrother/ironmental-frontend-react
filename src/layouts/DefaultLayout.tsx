@@ -2,8 +2,8 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { Layout } from 'antd'
 import styled from 'styled-components'
-import Header from '../components/Header'
-import Responsive from './Responsive'
+import Header from 'src/components/Header'
+import Responsive from 'src/layouts/Responsive'
 
 type Props = {
   component: React.FC<any>

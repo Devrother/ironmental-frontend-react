@@ -1,15 +1,5 @@
-export interface Article {
-  id: string
-  title: string
-  tags: string[]
-  text: string
-  articleLink: string
-  created: string
-  updated: string
-}
+import * as StateTypes from './state'
+import * as ActionTypes from './actions'
+import * as PropsTypes from './props'
 
-export interface ErrorInfo {
-  status: string
-  title: number | string
-  subTitle: string
-}
+export { PropsTypes, ActionTypes, StateTypes }

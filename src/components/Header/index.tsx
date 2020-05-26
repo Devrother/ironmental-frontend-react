@@ -1,6 +1,6 @@
 import React from 'react'
 import { Layout } from 'antd'
-import { colors } from '../../styles/palette'
+import { colors } from 'src/styles/palette'
 import styled from 'styled-components'
 import Navigation from './Navigation'
 
