@@ -4,7 +4,6 @@ import { Row, Col } from 'antd'
 import { icons } from 'src/assets/icons'
 import { fadeInUp } from 'src/styles/animations'
 import { useAnimationTrigger } from 'src/hooks'
-// interface Props {}
 
 const TechIntroSection: React.FC = props => {
   const observerEl = useRef<HTMLHeadingElement>(null)
@@ -28,10 +27,6 @@ const Section = styled.section`
   min-height: 148px;
   padding: 100px 0;
   text-align: center;
-  /* & > h2 {
-    font-size: 48px;
-    font-weight: 600;
-  } */
 `
 
 const Img = styled.img<{ delay: number }>`

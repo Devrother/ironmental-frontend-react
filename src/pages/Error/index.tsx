@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Result, Button } from 'antd'
-import { errorMessage } from 'src/constants'
 import { RouteComponentProps } from 'react-router-dom'
 import { PropsTypes } from 'src/types'
+import { errorMessage } from 'src/constants'
 
 interface Props extends RouteComponentProps {
   errorCode: 404 | 500 | '404' | '500'

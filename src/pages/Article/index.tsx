@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import { Skeleton } from 'antd'
+import { Skeleton, Divider } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
-import styled from 'styled-components'
-import TagList from 'src/components/TagList'
-import { dateUtils } from 'src/utils'
-import { getArticleById } from 'src/services/article/reducer'
-import { selectArticle } from 'src/services/article/selectors'
 import { useParams } from 'react-router-dom'
+import styled from 'styled-components'
+import { dateUtils } from 'src/utils'
+import { getArticleById } from 'src/services/article/actions'
+import { selectArticle } from 'src/services/article/selectors'
+import TagList from 'src/components/TagList'
 
 const ArticlePage: React.FC = () => {
   const dispatch = useDispatch()
@@ -32,7 +32,11 @@ const ArticlePage: React.FC = () => {
             <Date>{dateUtils.convertDate(created)}</Date>
             <TagList tags={tags} />
           </Head>
-          <main>{text}</main>
+          <Main>{text}</Main>
+          <Divider orientation="left">Link</Divider>
+          <LinkContainer>
+            <a href={articleLink}> {articleLink}</a>
+          </LinkContainer>
         </>
       )}
     </Section>
@@ -61,6 +65,16 @@ const H1 = styled.h1`
 const Date = styled.div`
   margin: 10px 0;
   font-size: 1rem;
+`
+
+const Main = styled.main`
+  padding-top: 30px;
+  padding-bottom: 10px;
+`
+
+const LinkContainer = styled.div`
+  font-size: 1rem;
+  padding: 0 20px;
 `
 
 export default ArticlePage

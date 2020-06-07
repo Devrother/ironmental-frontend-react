@@ -1,7 +1,7 @@
 import * as React from 'react'
+import styled from 'styled-components'
 import ArticleList from './ArticleList'
 import SearchInput from './SearchInput'
-import styled from 'styled-components'
 const Articles: React.FC = () => {
   return (
     <Section>

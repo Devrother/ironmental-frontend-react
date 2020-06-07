@@ -9,8 +9,6 @@ const FormSection: React.FC = () => {
   const [visibleModal, setVisibleModal] = useState(false)
   const [visibleResult, setVisibleResult] = useState(false)
 
-  // TODO: 부모-자식 간에 통신하게 하지말고 redux 상태로만 visible 하게하기
-  // 여기서 const visibleModal =  useSelector()로 하고, modal 컴포넌트에서 showModal 메서드 관리
   const showModal = () => {
     setVisibleModal(true)
   }
@@ -30,13 +28,13 @@ const FormSection: React.FC = () => {
   return (
     <Section>
       <H1>
-        <span>개발 상식 메일링 서비스</span>
+        <span>개발 토픽 메일링 서비스</span>
         <br />
         <span>아이언멘탈</span>
       </H1>
       <Article>
-        아이언 멘탈은 다양한 개발상식을 가볍게 접하고 싶은 이용자에게 매주
-        개발상식 관련 키워드를 이메일로 보내주는 구독 서비스입니다.
+        아이언 멘탈은 다양한 개발토픽을 가볍게 접하고 싶은 이용자에게 매주
+        개발토픽을 이메일로 보내주는 구독 서비스입니다.
       </Article>
       <ButtonContainer>
         <Button
@@ -62,9 +60,6 @@ const Section = styled.section`
 `
 const Article = styled.article`
   text-align: center;
-
-  /* TODO: H1과 중복 제거 */
-  /* Animation */
   ${fadeInUp(0.5)}
 `
 
@@ -89,8 +84,6 @@ const ButtonContainer = styled.div`
   padding: 15px;
   display: flex;
   justify-content: center;
-  /* align-items: center;
-  align-content: center; */
 `
 
 export default FormSection

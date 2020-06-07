@@ -1,8 +1,6 @@
 import * as React from 'react'
-import { images } from 'src/assets/images'
-
 import styled from 'styled-components'
-// interface Props {}
+import { images } from 'src/assets/images'
 
 const PhoneIntroSection: React.FC = () => {
   return (

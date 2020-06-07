@@ -33,6 +33,14 @@ export type SubscribeState = {
   loading: boolean
   result: {
     message: string
-    status: '미구독' | '미인증' | '구독중' | ''
+    status: '미구독' | '구독중' | ''
+  }
+}
+
+export type AuthState = {
+  error: Error | null
+  loading: boolean
+  result: {
+    message: string
   }
 }

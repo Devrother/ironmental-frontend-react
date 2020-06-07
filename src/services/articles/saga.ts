@@ -6,12 +6,16 @@ import {
   getArticlesFailure,
   startArticlesLoading,
   endArticlesLoading,
-} from './reducer'
+  GET_MORE_ARTICLES,
+} from './actions'
+import { AnyAction } from 'redux'
 
-export const getArticlesSaga = function*() {
+export const getArticlesSaga = function*(action: AnyAction) {
   yield put(startArticlesLoading())
   try {
-    const response = yield call(fetchArticles)
+    const { offset, limit } = action.payload
+    const response = yield call(fetchArticles, { offset, limit })
+
     const { datas, links } = response.data
 
     yield put(getArticlesSuccess(datas, links.next))
@@ -24,4 +28,5 @@ export const getArticlesSaga = function*() {
 
 export function* rootArticlesSaga() {
   yield takeEvery(GET_ARTICLES, getArticlesSaga)
+  yield takeEvery(GET_MORE_ARTICLES, getArticlesSaga)
 }

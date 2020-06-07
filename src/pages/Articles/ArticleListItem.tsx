@@ -1,5 +1,4 @@
 import React from 'react'
-import { Skeleton } from 'antd'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { List } from 'antd'
@@ -9,24 +8,19 @@ import TagLists from 'src/components/TagList'
 
 type ArticleProps = {
   article: PropsTypes.Article
-  isLoading: boolean
 }
 
-const ArticleListItem: React.FC<ArticleProps> = ({ article, isLoading }) => {
+const ArticleListItem: React.FC<ArticleProps> = ({ article }) => {
   const { id, title, tags, text } = article
   const linkTo = `${routePath.ARTICLES}/${id}`
 
   return (
     <ListItem>
-      {isLoading ? (
-        <Skeleton active={true} />
-      ) : (
-        <ItemLink to={linkTo}>
-          <TagLists tags={tags} />
-          <ItemMeta title={<Title>{title}</Title>} />
-          <Description>{text}</Description>
-        </ItemLink>
-      )}
+      <ItemLink to={linkTo}>
+        <TagLists tags={tags} />
+        <ItemMeta title={<Title>{title}</Title>} />
+        <Description>{text}</Description>
+      </ItemLink>
     </ListItem>
   )
 }
@@ -51,8 +45,11 @@ const ItemMeta = styled(ListItem.Meta)`
   }
 `
 
-const Description = styled.span`
+const Description = styled.p`
   color: grey;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 const ItemLink = styled(Link)`

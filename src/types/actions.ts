@@ -4,21 +4,31 @@ import {
   getArticlesFailure,
   startArticlesLoading,
   endArticlesLoading,
-} from 'src/services/articles/reducer'
+  getMoreArticles,
+  getMoreArticlesSuccess,
+  getMoreArticlesFailure,
+} from 'src/services/articles/actions'
 import {
   getArticleById,
   getArticleByIdSuccess,
   getArticleByIdFailure,
   startArticleLoading,
   endArticleLoading,
-} from 'src/services/article/reducer'
+} from 'src/services/article/actions'
 import {
   sendEmailSubscribe,
   sendEmailSubscribeSuccess,
   startSubscribeLoading,
   endSubscribeLoading,
   sendEmailSubscribeFailure,
-} from 'src/services/subscribe/reducer'
+} from 'src/services/subscribe/actions'
+import {
+  startAuthLoading,
+  endAuthLoading,
+  sendAuthConfirmFailure,
+  sendAuthConfirmSuccess,
+  sendAuthConfirm,
+} from 'src/services/auth/actions'
 
 export type Articles =
   | ReturnType<typeof getArticles>
@@ -26,6 +36,9 @@ export type Articles =
   | ReturnType<typeof getArticlesFailure>
   | ReturnType<typeof startArticlesLoading>
   | ReturnType<typeof endArticlesLoading>
+  | ReturnType<typeof getMoreArticles>
+  | ReturnType<typeof getMoreArticlesSuccess>
+  | ReturnType<typeof getMoreArticlesFailure>
 
 export type Article =
   | ReturnType<typeof getArticleById>
@@ -40,3 +53,10 @@ export type Subscribe =
   | ReturnType<typeof sendEmailSubscribeFailure>
   | ReturnType<typeof startSubscribeLoading>
   | ReturnType<typeof endSubscribeLoading>
+
+export type Auth =
+  | ReturnType<typeof startAuthLoading>
+  | ReturnType<typeof endAuthLoading>
+  | ReturnType<typeof sendAuthConfirm>
+  | ReturnType<typeof sendAuthConfirmSuccess>
+  | ReturnType<typeof sendAuthConfirmFailure>

@@ -4,7 +4,7 @@ import { Modal, Input, Button } from 'antd'
 import styled from 'styled-components'
 import { validators } from 'src/utils'
 import { keyCodes } from 'src/constants'
-import { sendEmailSubscribe } from 'src/services/subscribe/reducer'
+import { sendEmailSubscribe } from 'src/services/subscribe/actions'
 
 interface Props {
   closeModal: () => void
@@ -65,7 +65,7 @@ const EmailFormModal: React.FC<Props> = ({ closeModal, showResult }) => {
       </H2>
       <Description>
         이메일을 입력해주세요. <br />
-        매주 월요일 개발 상식 키워드를 보내드립니다! 😄
+        매주 월요일 개발 토픽을 보내드립니다! 😄
       </Description>
       <InputContainer>
         <StyledInput

@@ -1,13 +1,52 @@
-import * as React from 'react'
-// TODO: AuthResult 페이지 부터 제일 먼저 만들기
-/**
- * submit 하자마자 바로 이 페이지로 이동 -> 로딩 애니메이션 -> 결과 애니메이션(아래 홈으로 버튼 추가)
- * 이건 페이지가 존재하는 부분인데... 라우팅 보다는  css로 덧입는 결과 엘리먼트를 만드는게 더 나을거 같다.
- */
-// interface Props {}
+import React, { useEffect } from 'react'
+import Lottie from 'react-lottie'
+import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { authSelector } from 'src/services/auth/selector'
+import { sendAuthConfirm } from 'src/services/auth/actions'
+import ConfirmAnimation from 'src/assets/animations/confirm.json'
+import FailAnimation from 'src/assets/animations/fail.json'
 
-const AuthReulst: React.FunctionComponent = () => {
-  return <div>loading and result</div>
+const AuthResult: React.FC = () => {
+  const dispatch = useDispatch()
+  const { subscriberId } = useParams()
+  const { error /* result, loading */ } = useSelector(authSelector)
+
+  useEffect(() => {
+    dispatch(sendAuthConfirm(subscriberId))
+  }, [dispatch, subscriberId])
+  return (
+    <AuthResultContainer>
+      {error ? (
+        <Lottie
+          options={{
+            animationData: FailAnimation,
+            loop: false,
+          }}
+          height={400}
+          width={400}
+        />
+      ) : (
+        <Lottie
+          options={{
+            animationData: ConfirmAnimation,
+            loop: false,
+          }}
+          height={400}
+          width={400}
+        />
+      )}
+    </AuthResultContainer>
+  )
 }
 
-export default AuthReulst
+const AuthResultContainer = styled.div``
+
+// const Message = styled.p`
+//   margin: 0 auto;
+//   font-size: 1.2rem;
+//   text-align: center;
+// `
+
+export default AuthResult

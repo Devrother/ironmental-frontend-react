@@ -1,12 +1,7 @@
 import * as React from 'react'
+import { Card } from 'antd'
 import styled from 'styled-components'
 import TagList from 'src/components/TagList'
-import { Card } from 'antd'
-
-// TODO: 사가 적용때 props로 데이터 내려받도록 만들기
-// interface Props{
-
-// }
 
 const { Meta } = Card
 const ArchiveCard: React.FC = () => {

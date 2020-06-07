@@ -16,7 +16,7 @@ const Navigation: React.FC = () => {
             <StyledLink to={routePath.HOME}>홈</StyledLink>
           </MenuItem>
           <MenuItem>
-            <StyledLink to={routePath.ARTICLES}>아티클(?)</StyledLink>
+            <StyledLink to={routePath.ARTICLES}>아티클</StyledLink>
           </MenuItem>
         </Menu>
       </Nav>
