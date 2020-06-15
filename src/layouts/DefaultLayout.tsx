@@ -16,7 +16,6 @@ const DefaultLayout: React.FC<Props> = ({ component: Component, ...rest }) => {
       render={matchProps => (
         <Layout>
           <Header />
-
           <StyledContent>
             <Responsive>
               <Component {...matchProps} {...rest} />

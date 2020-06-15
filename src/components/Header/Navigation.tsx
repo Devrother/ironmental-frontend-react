@@ -18,6 +18,9 @@ const Navigation: React.FC = () => {
           <MenuItem>
             <StyledLink to={routePath.ARTICLES}>아티클</StyledLink>
           </MenuItem>
+          <MenuItem>
+            <StyledLink to={routePath.LOGIN}>로그인</StyledLink>
+          </MenuItem>
         </Menu>
       </Nav>
     </Responsive>

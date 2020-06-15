@@ -9,7 +9,6 @@ import { articlesSelector } from 'src/services/articles/selectors'
 import ArticleListItem from './ArticleListItem'
 import ArticlesLoading from 'src/pages/Articles/ArticlesLoading'
 
-// TODO: useParams를 사용하여 ArchiveIntroSection일 경우 인피니티 스크롤이 먹히지 않도록 하기
 const ArticleList: React.FC = () => {
   const dispatch = useDispatch()
   const target = useRef<HTMLDivElement>(null)
@@ -28,9 +27,6 @@ const ArticleList: React.FC = () => {
       dispatch(getArticles(0, 15))
       return
     }
-
-    // 이미 state가 존재하는 경우 다음 next parameter를 활용해서 dispatch하기
-    // console.log('next dispatch')
   }, [dispatch, articles.length])
 
   useInfiniteScroll({
@@ -46,11 +42,10 @@ const ArticleList: React.FC = () => {
 
   return (
     <>
-      <List itemLayout="vertical" size="large">
+      <List itemLayout="vertical" size="large" style={{ marginBottom: '30px' }}>
         {articleList}
       </List>
       <ArticlesLoading ref={target} isEnd={!loading} />
-      {/* <ArticleLoading loading={loading} /> */}
     </>
   )
 }

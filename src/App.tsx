@@ -6,6 +6,7 @@ import Archive from 'src/pages/Articles'
 import ArchiveArticle from 'src/pages/Article'
 import AuthResult from 'src/pages/AuthResult'
 import SubscribeResult from 'src/pages/SubscribeResult'
+import Auth from 'src/pages/Auth'
 import Error from 'src/pages/Error'
 import { routePath } from 'src/constants'
 
@@ -25,6 +26,8 @@ function App() {
           path={routePath.SUBSCRIBE_RESULT}
           component={SubscribeResult}
         />
+        <DefaultLayout path={routePath.LOGIN} component={Auth} />
+        <DefaultLayout path={routePath.JOIN} component={Auth} />
         <DefaultLayout path="*" component={Error} />
       </Switch>
     </BrowserRouter>
