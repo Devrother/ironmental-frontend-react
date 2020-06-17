@@ -13,15 +13,7 @@ export type ArticlesState = {
 export type ArticleState = {
   error: Error | null
   loading: boolean
-  article: {
-    id: string
-    title: string
-    tags: string[]
-    text: string
-    articleLink: string
-    created: string
-    updated: string
-  }
+  article: PropsTypes.Article
 }
 
 export type LoadingState = {
@@ -43,4 +35,11 @@ export type AuthState = {
   result: {
     message: string
   }
+}
+
+export type UserState = {
+  error: Error | null
+  loading: boolean
+  user: PropsTypes.User | null
+  prevUrl: string
 }

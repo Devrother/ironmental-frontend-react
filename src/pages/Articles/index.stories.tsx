@@ -4,7 +4,7 @@ import Articles from '.'
 import Doc from './instruction.md'
 
 export default {
-  title: 'Articles Page',
+  title: 'Pages / Articles Page',
   component: Articles,
   parameters: {
     notes: Doc,

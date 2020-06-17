@@ -1,4 +1,4 @@
-# Aticles Pages
+# Aticles Page
 
 ## 필요 API 데이터
 

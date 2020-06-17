@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import DefaultLayout from './layouts/DefaultLayout'
 import Home from 'src/pages/Home'
 import Archive from 'src/pages/Articles'
@@ -8,6 +8,7 @@ import AuthResult from 'src/pages/AuthResult'
 import SubscribeResult from 'src/pages/SubscribeResult'
 import Auth from 'src/pages/Auth'
 import Error from 'src/pages/Error'
+import Callback from './pages/Auth/callback'
 import { routePath } from 'src/constants'
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         />
         <DefaultLayout path={routePath.LOGIN} component={Auth} />
         <DefaultLayout path={routePath.JOIN} component={Auth} />
+        <Route path="/auth/callback" component={Callback} />
         <DefaultLayout path="*" component={Error} />
       </Switch>
     </BrowserRouter>

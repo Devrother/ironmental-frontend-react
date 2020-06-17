@@ -32,6 +32,7 @@ const { Content } = Layout
 const StyledContent = styled(Content)`
   background-color: #fff;
   margin-top: 64px;
+  min-height: 1000px;
 `
 
 export default DefaultLayout

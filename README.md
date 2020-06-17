@@ -1,3 +1,17 @@
+# ironmental-frontend-react
+
+아이언멘탈 리뉴얼 프로젝트
+
+## Core External Library
+
+- ant.design
+- Lottie
+
+## Need API data DOC
+
+https://ironmental-story.netlify.app/ powered by storybook
+
+<details><summary>CRA Default README.md 접기/펼치기 버튼</summary>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +80,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+</details>

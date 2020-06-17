@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react'
+import React /* useEffect */ from 'react'
 import Lottie from 'react-lottie'
 import styled from 'styled-components'
-import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useSelector /*  useDispatch  */ } from 'react-redux'
+// import { useParams } from 'react-router-dom'
 import { authSelector } from 'src/services/auth/selector'
-import { sendAuthConfirm } from 'src/services/auth/actions'
+// import { sendAuthConfirm } from 'src/services/auth/actions'
 import ConfirmAnimation from 'src/assets/animations/confirm.json'
 import FailAnimation from 'src/assets/animations/fail.json'
 
+// TODO: 로그인, 회원가입 결과 페이지로 활용하기
 const AuthResult: React.FC = () => {
-  const dispatch = useDispatch()
-  const { subscriberId } = useParams()
+  // const dispatch = useDispatch()
+  // const { subscriberId } = useParams()
   const { error /* result, loading */ } = useSelector(authSelector)
 
-  useEffect(() => {
-    dispatch(sendAuthConfirm(subscriberId))
-  }, [dispatch, subscriberId])
+  // useEffect(() => {
+  //   dispatch(sendAuthConfirm())
+  // }, [dispatch, subscriberId])
   return (
     <AuthResultContainer>
       {error ? (

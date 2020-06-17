@@ -1,4 +1,6 @@
 import React from 'react'
+import { Avatar } from 'antd'
+import { UserOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { routePath } from 'src/constants'
@@ -21,6 +23,11 @@ const Navigation: React.FC = () => {
           <MenuItem>
             <StyledLink to={routePath.LOGIN}>로그인</StyledLink>
           </MenuItem>
+          {/* <MenuItem>
+            <StyledLink to={routePath.PROFILE}>
+              <Avatar size="large" icon={<UserOutlined />} />
+            </StyledLink>
+          </MenuItem> */}
         </Menu>
       </Nav>
     </Responsive>

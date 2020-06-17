@@ -5,6 +5,7 @@ import { GithubOutlined } from '@ant-design/icons'
 interface Props {
   type: 'login' | 'join'
   service: 'github'
+  href: string
 }
 
 const serviceMap = {
@@ -27,9 +28,11 @@ const IconMap = {
 const OauthButton: React.FC<Props> = ({
   type = 'login',
   service = 'github',
+  href,
 }) => {
   return (
     <Button
+      href={href}
       block={true}
       type="primary"
       icon={IconMap[service]}

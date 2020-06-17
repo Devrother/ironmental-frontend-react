@@ -1,8 +1,9 @@
 import React from 'react'
 import OauthButton from 'src/components/Auth/OauthButton'
 import styled from 'styled-components'
+import * as queryString from 'query-string'
 import { Link, useLocation } from 'react-router-dom'
-import { routePath } from 'src/constants'
+import { routePath, apiConfig } from 'src/constants'
 
 const typeMap: { [key: string]: 'login' | 'join' } = {
   [routePath.LOGIN]: 'login',
@@ -28,16 +29,24 @@ const bottomMap: { [key: string]: () => React.ReactElement } = {
 }
 
 const Auth: React.FC = () => {
-  const params = useLocation()
-  const authType = typeMap[params.pathname]
+  const location = useLocation()
+  const params = queryString.stringify({
+    // TODO: CLIENT_ID는 Dev용이랑 local 용이랑 환경변수가 다름, netlify에서 만약 인증이 잘 안된다면, SECRET_KEY가 달라서 그런 걸 수 있음
+    client_id: process.env.REACT_APP_API_GITHUB_OAUTH_CLIENT_ID,
+    redirect_uri: `${window.location.origin}/auth/callback?prevUrl=${location.pathname}`,
+    scope: ['read:user', 'user:email'].join(' '),
+    allow_signup: true,
+  })
+  const githubAuthUrl = `${apiConfig.GITHUB_AUTH_BASE_URL}?${params}`
+  const authType = typeMap[location.pathname]
 
   return (
     <Section>
       <h2>{titleMap[authType]}</h2>
       <ButtonContainer>
-        <OauthButton type={authType} service={'github'} />
+        <OauthButton href={githubAuthUrl} type={authType} service={'github'} />
       </ButtonContainer>
-      <Bottom>{bottomMap[params.pathname]()}</Bottom>
+      <Bottom>{bottomMap[location.pathname]()}</Bottom>
     </Section>
   )
 }
@@ -53,4 +62,5 @@ const ButtonContainer = styled.div`
 `
 
 const Bottom = styled.div``
+
 export default Auth

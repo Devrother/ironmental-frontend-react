@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useInfiniteScroll } from 'src/hooks'
 import { PropsTypes } from 'src/types'
 import { apiUtils } from 'src/utils'
-import { getArticles } from 'src/services/articles/actions'
+import { actions } from 'src/services/articles/actions'
 import { articlesSelector } from 'src/services/articles/selectors'
 import ArticleListItem from './ArticleListItem'
 import ArticlesLoading from 'src/pages/Articles/ArticlesLoading'
@@ -24,7 +24,7 @@ const ArticleList: React.FC = () => {
 
   useEffect(() => {
     if (!articles.length) {
-      dispatch(getArticles(0, 15))
+      dispatch(actions.getArticles(0, 15))
       return
     }
   }, [dispatch, articles.length])
@@ -35,7 +35,7 @@ const ArticleList: React.FC = () => {
       if (!loading && !!nextLink && entries[0].isIntersecting) {
         const { offset, limit } = apiUtils.querystringToObj(nextLink)
 
-        dispatch(getArticles(offset, limit))
+        dispatch(actions.getArticles(offset, limit))
       }
     },
   })
