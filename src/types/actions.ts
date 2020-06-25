@@ -3,6 +3,7 @@ import { actions as articleActions } from 'src/services/article/actions'
 import { actions as subscribeActions } from 'src/services/subscribe/actions'
 import { actions as authActions } from 'src/services/auth/actions'
 import { actions as userActions } from 'src/services/user/actions'
+import { actions as profileActions } from 'src/services/profile/actions'
 
 export type Articles = ReturnType<
   typeof articlesActions[keyof typeof articlesActions]
@@ -19,3 +20,7 @@ export type Subscribe = ReturnType<
 export type Auth = ReturnType<typeof authActions[keyof typeof authActions]>
 
 export type User = ReturnType<typeof userActions[keyof typeof userActions]>
+
+export type Profile = ReturnType<
+  typeof profileActions[keyof typeof profileActions]
+>

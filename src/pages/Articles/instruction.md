@@ -14,8 +14,10 @@
     title:'CORS 란',
     text:'CORS text or none',
     articleLink:"https://google.com",
-    selfLink: '/articles/5cf142b857cd51f683cd928e'
     commentCount:23,
-    likesCount:42
+    likesCount:42,
+    links:{
+      self: '/articles/5cf142b857cd51f683cd928e'
+    }
   }
   ```

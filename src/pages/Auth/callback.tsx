@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, RouteComponentProps } from 'react-router-dom'
 import { apiUtils } from 'src/utils'
 import { useDispatch } from 'react-redux'
 import { actions } from 'src/services/user/actions'
 import { routePath } from 'src/constants'
 
-const Callback: React.FC = () => {
+const Callback: React.FC<RouteComponentProps> = ({ history }) => {
   const dispatch = useDispatch()
   const code = apiUtils.querystringToObj(useLocation().search).code as string
   const prevUrl = apiUtils.querystringToObj(useLocation().search).prevUrl
@@ -16,9 +16,9 @@ const Callback: React.FC = () => {
     } else if (prevUrl === routePath.LOGIN) {
       dispatch(actions.sendLogin(code))
     }
-  }, [dispatch, code, prevUrl])
+  }, [dispatch, code, prevUrl, history])
 
-  return <div>인증완료!</div>
+  return <div>인증주웅..!</div>
 }
 
 export default Callback

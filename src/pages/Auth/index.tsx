@@ -46,7 +46,7 @@ const Auth: React.FC = () => {
       <ButtonContainer>
         <OauthButton href={githubAuthUrl} type={authType} service={'github'} />
       </ButtonContainer>
-      <Bottom>{bottomMap[location.pathname]()}</Bottom>
+      <div>{bottomMap[location.pathname]()}</div>
     </Section>
   )
 }
@@ -60,7 +60,5 @@ const ButtonContainer = styled.div`
   margin: 0 auto;
   margin-bottom: 30px;
 `
-
-const Bottom = styled.div``
 
 export default Auth

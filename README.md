@@ -7,7 +7,7 @@
 - ant.design
 - Lottie
 
-## Need API data DOC
+## Need API data Doc
 
 https://ironmental-story.netlify.app/ powered by storybook
 

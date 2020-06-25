@@ -1,6 +1,6 @@
 import * as React from 'react'
 import ThreadListItem from './ThreadListItem'
-import CommentForm from './CommentForm'
+import CommentForm from 'src/components/Comments/CommentForm'
 
 const ThreadList: React.FC = () => {
   return (

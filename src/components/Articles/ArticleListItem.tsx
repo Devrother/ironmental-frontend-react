@@ -75,7 +75,6 @@ const ItemLink = styled(Link)`
   &:hover {
     color: black;
     text-decoration: underline;
-    /* text-decoration-thickness: 10px; */
     text-decoration-color: #000;
   }
 `

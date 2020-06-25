@@ -27,9 +27,7 @@ const DefaultLayout: React.FC<Props> = ({ component: Component, ...rest }) => {
   )
 }
 
-const { Content } = Layout
-
-const StyledContent = styled(Content)`
+const StyledContent = styled(Layout.Content)`
   background-color: #fff;
   margin-top: 64px;
   min-height: 1000px;

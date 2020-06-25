@@ -16,10 +16,6 @@ export type ArticleState = {
   article: PropsTypes.Article
 }
 
-export type LoadingState = {
-  isLoading: boolean
-}
-
 export type SubscribeState = {
   error: Error | null
   loading: boolean
@@ -41,5 +37,18 @@ export type UserState = {
   error: Error | null
   loading: boolean
   user: PropsTypes.User | null
-  prevUrl: string
+}
+
+export type ProfileState = {
+  error: Error | null
+  loading: boolean
+  profile: {
+    userId: string
+    email: string
+    username: string
+    likesCount: number
+    commentCount: number
+    likes: (PropsTypes.Article | PropsTypes.Comment)[]
+    comments: PropsTypes.Comment[]
+  }
 }

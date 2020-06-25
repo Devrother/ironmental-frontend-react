@@ -1,22 +1,41 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import ArticleList from './ArticleList'
+import React, { useEffect, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useInfiniteScroll } from 'src/hooks'
+import { apiUtils } from 'src/utils'
+import { actions } from 'src/services/articles/actions'
+import { articlesSelector } from 'src/services/articles/selectors'
+import ArticleList from 'src/components/Articles/ArticleList'
+import ArticlesLoading from 'src/components/Articles/ArticlesLoading'
 
-// import SearchInput from './SearchInput'
 const Articles: React.FC = () => {
+  const dispatch = useDispatch()
+  const target = useRef<HTMLDivElement>(null)
+  const { loading, articles, nextLink } = useSelector(articlesSelector)
+
+  useEffect(() => {
+    if (!articles.length) {
+      dispatch(actions.getArticles(0, 15))
+      return
+    }
+  }, [dispatch, articles.length])
+
+  useInfiniteScroll({
+    target,
+    onIntersect: entries => {
+      if (!loading && !!nextLink && entries[0].isIntersecting) {
+        const { offset, limit } = apiUtils.querystringToObj(nextLink)
+
+        dispatch(actions.getArticles(offset, limit))
+      }
+    },
+  })
+
   return (
-    <Section>
-      <SearchContainer>{/* <SearchInput /> */}</SearchContainer>
-      <ArticleList />
-    </Section>
+    <section>
+      <ArticleList articles={articles} />
+      <ArticlesLoading ref={target} isEnd={!loading} />
+    </section>
   )
 }
-
-const Section = styled.section``
-
-const SearchContainer = styled.div`
-  /* margin: 30px 0; */
-  text-align: right;
-`
 
 export default Articles

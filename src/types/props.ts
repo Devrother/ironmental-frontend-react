@@ -7,7 +7,6 @@ export interface Article {
   created: string
   updated: string
 }
-
 export interface User {
   userId: string
   email: string
@@ -15,6 +14,22 @@ export interface User {
   /* isSubscribe: boolean
   likes: string[]
   favoriteTags: string[] */
+}
+
+export interface Comment {
+  id: string
+  text: string
+  author: {
+    userId: string
+    userName: string
+  }
+  created: string
+  updated: string
+  likesCount: number
+  threadCount: number
+  links: {
+    threads: string
+  }
 }
 
 export interface ErrorInfo {

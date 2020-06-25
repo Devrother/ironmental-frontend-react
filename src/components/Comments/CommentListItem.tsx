@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Comment, Tooltip, Avatar } from 'antd'
 import { LikeOutlined, LikeFilled, MessageOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
-import ThreadList from './ThreadList'
+import ThreadList from 'src/components/Threads/ThreadList'
 
 const CommentListItem: React.FC = () => {
   // FIXME: API 완성되면 리덕스 상태로 빼기

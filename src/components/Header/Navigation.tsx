@@ -1,12 +1,16 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { routePath } from 'src/constants'
 import Responsive from 'src/layouts/Responsive'
+import { getLoggedInUser } from 'src/services/user/selectors'
 
 const Navigation: React.FC = () => {
+  const user = useSelector(getLoggedInUser)
+
   return (
     <Responsive>
       <Nav>
@@ -20,14 +24,17 @@ const Navigation: React.FC = () => {
           <MenuItem>
             <StyledLink to={routePath.ARTICLES}>아티클</StyledLink>
           </MenuItem>
-          <MenuItem>
-            <StyledLink to={routePath.LOGIN}>로그인</StyledLink>
-          </MenuItem>
-          {/* <MenuItem>
-            <StyledLink to={routePath.PROFILE}>
-              <Avatar size="large" icon={<UserOutlined />} />
-            </StyledLink>
-          </MenuItem> */}
+          {user?.userId ? (
+            <MenuItem>
+              <StyledLink to={routePath.PROFILE}>
+                <Avatar size="large" icon={<UserOutlined />} />
+              </StyledLink>
+            </MenuItem>
+          ) : (
+            <MenuItem>
+              <StyledLink to={routePath.LOGIN}>로그인</StyledLink>
+            </MenuItem>
+          )}
         </Menu>
       </Nav>
     </Responsive>

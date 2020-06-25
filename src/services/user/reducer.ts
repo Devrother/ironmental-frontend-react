@@ -1,10 +1,15 @@
 import { StateTypes, ActionTypes } from 'src/types'
 import {
+  SEND_LOGIN_SUCCESS,
+  SEND_LOGIN_FAILURE,
+  SEND_JOIN_SUCCESS,
+  SEND_JOIN_FAILURE,
+  START_USER_LOADING,
+  END_USER_LOADING,
   SET_USER,
-  SET_USER_FAILURE,
-  START_SET_USER_LOADING,
-  END_SET_USER_LOADING,
-  SET_PREV_URL,
+  CHECK_LOGGED_IN_SUCCESS,
+  CHECK_LOGGED_IN_FAILURE,
+  LOGOUT,
 } from './actions'
 
 const initialState: StateTypes.UserState = {
@@ -13,11 +18,7 @@ const initialState: StateTypes.UserState = {
     userId: '',
     email: '',
     username: '',
-    /* isSubscribe: false,
-    likes: [],
-    favoriteTags: [], */
   },
-  prevUrl: '',
   error: null,
 }
 
@@ -26,30 +27,33 @@ export const userReducer = (
   action: ActionTypes.User
 ) => {
   switch (action.type) {
-    case SET_USER: {
+    case SET_USER:
+    case CHECK_LOGGED_IN_SUCCESS:
+    case SEND_LOGIN_SUCCESS:
+    case SEND_JOIN_SUCCESS: {
       const { user } = action.payload
 
       return { ...state, user, error: null }
     }
 
-    case SET_USER_FAILURE: {
+    case LOGOUT: {
+      return { ...state, user: null }
+    }
+
+    case CHECK_LOGGED_IN_FAILURE:
+    case SEND_LOGIN_FAILURE:
+    case SEND_JOIN_FAILURE: {
       const { error } = action.payload
 
       return { ...state, user: null, error }
     }
 
-    case START_SET_USER_LOADING: {
+    case START_USER_LOADING: {
       return { ...state, loading: true }
     }
 
-    case END_SET_USER_LOADING: {
+    case END_USER_LOADING: {
       return { ...state, loading: false }
-    }
-
-    case SET_PREV_URL: {
-      const { prevUrl } = action.payload
-
-      return { ...state, prevUrl }
     }
 
     default: {
