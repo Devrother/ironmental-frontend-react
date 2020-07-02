@@ -6,6 +6,7 @@ import Doc from './instruction.md'
 import UserInfo from './UserInfo'
 import ActivityInfo from './ActivityInfo'
 import LikesList from './LikesList'
+import CommentList from './CommentList'
 import styled from 'styled-components'
 
 const Profile: React.FC = () => {
@@ -16,6 +17,7 @@ const Profile: React.FC = () => {
       <ActivityInfo />
       <Divider />
       <LikesList />
+      <CommentList />
     </Section>
   )
 }

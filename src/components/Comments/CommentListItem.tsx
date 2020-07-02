@@ -4,7 +4,11 @@ import { LikeOutlined, LikeFilled, MessageOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
 import ThreadList from 'src/components/Threads/ThreadList'
 
-const CommentListItem: React.FC = () => {
+type Props = {
+  type?: 'article' | 'profile'
+}
+
+const CommentListItem: React.FC<Props> = ({ type = 'article' }) => {
   // FIXME: API 완성되면 리덕스 상태로 빼기
   const [likes, setLikes] = useState(false)
   const [showThread, setShowThread] = useState(false)
@@ -20,23 +24,27 @@ const CommentListItem: React.FC = () => {
   return (
     <>
       <Comment
-        actions={[
-          <ActionItem key="like-status" onClick={onClickLikes}>
-            {likes ? <LikeFilled /> : <LikeOutlined />}
-            214
-          </ActionItem>,
-          <ActionItem key="comments" onClick={onClickShowThread}>
-            <MessageOutlined />
-            214
-          </ActionItem>,
-          <ActionItem
-            key="reply-to"
-            style={{ color: '#1890ff' }}
-            onClick={onClickShowThread}
-          >
-            쓰레드 보기..
-          </ActionItem>,
-        ]}
+        actions={
+          type === 'article'
+            ? [
+                <ActionItem key="like-status" onClick={onClickLikes}>
+                  {likes ? <LikeFilled /> : <LikeOutlined />}
+                  214
+                </ActionItem>,
+                <ActionItem key="comments" onClick={onClickShowThread}>
+                  <MessageOutlined />
+                  214
+                </ActionItem>,
+                <ActionItem
+                  key="reply-to"
+                  style={{ color: '#1890ff' }}
+                  onClick={onClickShowThread}
+                >
+                  쓰레드 보기..
+                </ActionItem>,
+              ]
+            : []
+        }
         author={<a href="http://google.com">송중기</a>}
         avatar={
           <Avatar

@@ -8,10 +8,14 @@ import { PropsTypes } from 'src/types'
 import TagLists from 'src/components/TagList'
 
 type ArticleProps = {
+  type?: 'article' | 'profile'
   article: PropsTypes.Article
 }
 
-const ArticleListItem: React.FC<ArticleProps> = ({ article }) => {
+const ArticleListItem: React.FC<ArticleProps> = ({
+  type = 'article',
+  article,
+}) => {
   const { id, title, tags, text } = article
   const linkTo = `${routePath.ARTICLES}/${id}`
 
@@ -34,7 +38,7 @@ const ArticleListItem: React.FC<ArticleProps> = ({ article }) => {
   ]
 
   return (
-    <ListItem actions={actions}>
+    <ListItem actions={type === 'article' ? [actions] : []}>
       <TagLists tags={tags} />
       <ItemMeta
         title={

@@ -1,3 +1,12 @@
+export interface User {
+  userId: string
+  email: string
+  username: string
+  /* isSubscribe: boolean
+  likes: string[]
+  favoriteTags: string[] */
+}
+
 export interface Article {
   id: string
   title: string
@@ -6,14 +15,6 @@ export interface Article {
   articleLink: string
   created: string
   updated: string
-}
-export interface User {
-  userId: string
-  email: string
-  username: string
-  /* isSubscribe: boolean
-  likes: string[]
-  favoriteTags: string[] */
 }
 
 export interface Comment {

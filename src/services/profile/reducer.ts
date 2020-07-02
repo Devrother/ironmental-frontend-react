@@ -19,5 +19,8 @@ export const profileReducer = (
   action: ActionTypes.Profile
 ) => {
   switch (action.type) {
+    default: {
+      return state
+    }
   }
 }
